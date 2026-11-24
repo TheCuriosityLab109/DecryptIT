@@ -187,7 +187,7 @@ jobs:
           def post(path,data):
               req=urllib.request.Request(worker+path,data=json.dumps(data).encode('utf-8'),
                   headers={'Content-Type':'application/json',
-                           'Origin':'https://adityasuresh109.github.io',
+                           'Origin':'https://thecuriositylab109.github.io',
                            'Referer':page,
                            'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36',
                            'Accept':'application/json'},method='POST')

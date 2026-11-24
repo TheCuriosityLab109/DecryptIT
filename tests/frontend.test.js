@@ -13,7 +13,7 @@ function browser({hash='',saved={}}={}){
   '.connection':{className:'',textContent:''}
  };
  const historyCalls=[],sent=[],requests=[],sockets=[];
- const location={origin:'https://adityasuresh109.github.io',pathname:'/DecryptIT/',hash};
+ const location={origin:'https://thecuriositylab109.github.io',pathname:'/DecryptIT/',hash};
  const listeners={};
  const store=new Map(Object.entries(saved));
  const window={

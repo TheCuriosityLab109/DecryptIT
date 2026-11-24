@@ -2,7 +2,7 @@
 
 A custom 5×5 word-deduction party game for 6–30 player phones, with private spymaster keys, connected-operative majority voting, guess banking, clue memory restrictions, host recovery, and best-of series. Static frontend + Cloudflare Worker / SQLite Durable Object.
 
-> **DEPLOYED — AWAITING ZUKO'S LIVE ACCEPTANCE.** Zuko supplied the curated `word-packs.json` (400 Family + 400 NSFW words); validation passes for both lists. The 30 overlapping normalized words between packs are allowed and the server prevents early repeat draws across packs. The Worker is deployed at `https://decryptit-agency.adityasuresh2110.workers.dev` and GitHub Pages is published at `https://adityasuresh109.github.io/DecryptIT/`. The release workflow injects the verified Worker URL into the published site's `frontend/config.js`. iOS Safari and Android Chrome physical-device acceptance are pending. Simulated protocol tests **do not** count as that sign-off.
+> **DEPLOYED — AWAITING ZUKO'S LIVE ACCEPTANCE.** Zuko supplied the curated `word-packs.json` (400 Family + 400 NSFW words); validation passes for both lists. The 30 overlapping normalized words between packs are allowed and the server prevents early repeat draws across packs. The Worker is deployed at `https://decryptit-agency.adityasuresh2110.workers.dev` and GitHub Pages is published at `https://thecuriositylab109.github.io/DecryptIT/`. The release workflow injects the verified Worker URL into the published site's `frontend/config.js`. iOS Safari and Android Chrome physical-device acceptance are pending. Simulated protocol tests **do not** count as that sign-off.
 
 ## Repository layout
 
@@ -24,8 +24,8 @@ A custom 5×5 word-deduction party game for 6–30 player phones, with private s
    ```
 
    The Durable Object is created by the `new_sqlite_classes` migration in `worker/wrangler.jsonc`. Cloudflare permissions and free-tier availability must be verified for the specific account. Do **not** put Cloudflare secrets in code. Alternatively run GitHub Actions `Deploy DecryptIT Worker` with repo secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` (created for this repository). No deployment is automatic from `main` to avoid unintended Worker release.
-3. The unified `Release DecryptIT (Worker + Pages)` workflow deploys the Worker, verifies live `/health`, and automatically injects its actual HTTPS address as `window.DECRYPTIT_WORKER_URL` into the GitHub Pages artifact. Local non-workflow deployments require manually configuring `frontend/config.js`. The backend restricts website origins to `https://adityasuresh109.github.io`, localhost, or explicit `ALLOWED_ORIGIN` Worker setting.
-4. GitHub Pages is configured and deployed at `https://adityasuresh109.github.io/DecryptIT/`. The unified release workflow publishes `/frontend` from tested changes on `main`.
+3. The unified `Release DecryptIT (Worker + Pages)` workflow deploys the Worker, verifies live `/health`, and automatically injects its actual HTTPS address as `window.DECRYPTIT_WORKER_URL` into the GitHub Pages artifact. Local non-workflow deployments require manually configuring `frontend/config.js`. The backend restricts website origins to `https://thecuriositylab109.github.io`, localhost, or explicit `ALLOWED_ORIGIN` Worker setting.
+4. GitHub Pages is configured and deployed at `https://thecuriositylab109.github.io/DecryptIT/`. The unified release workflow publishes `/frontend` from tested changes on `main`.
 5. Check `GET <workerURL>/health` returns `wordPacksReady: true`, then run a test party with 6+ phones. Host creates a room, shares QR or six-character code, assigns one spymaster per team, then starts. Host's `OPEN TV` opens the read-only public route `#tv=CODE` separately from the console.
 
 ## Local development / verification

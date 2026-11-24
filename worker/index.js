@@ -11,8 +11,8 @@ function secret(bytes=24){const data=crypto.getRandomValues(new Uint8Array(bytes
 function code(){const b=crypto.getRandomValues(new Uint8Array(6));return Array.from(b,v=>ABC[v%ABC.length]).join('');}
 function validCode(s){return typeof s==='string'&&/^[A-HJ-NP-Z2-9]{6}$/.test(s);}
 function json(data,status=200){return new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff'}});}
-function allowedOrigin(o,env){if(!o)return true;try{const u=new URL(o);return u.origin==='https://adityasuresh109.github.io'||u.origin===env?.ALLOWED_ORIGIN||(/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(u.origin));}catch{return false;}}
-function cors(response,origin){const h=new Headers(response.headers);h.set('access-control-allow-origin',origin||'https://adityasuresh109.github.io');h.set('vary','Origin');h.set('access-control-allow-methods','GET, POST, OPTIONS');h.set('access-control-allow-headers','content-type');return new Response(response.body,{status:response.status,headers:h});}
+function allowedOrigin(o,env){if(!o)return true;try{const u=new URL(o);return u.origin==='https://thecuriositylab109.github.io'||u.origin===env?.ALLOWED_ORIGIN||(/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(u.origin));}catch{return false;}}
+function cors(response,origin){const h=new Headers(response.headers);h.set('access-control-allow-origin',origin||'https://thecuriositylab109.github.io');h.set('vary','Origin');h.set('access-control-allow-methods','GET, POST, OPTIONS');h.set('access-control-allow-headers','content-type');return new Response(response.body,{status:response.status,headers:h});}
 async function bodyOf(request){const raw=await request.text();if(raw.length>4096)error('Request is too large.');return raw?JSON.parse(raw):{};}
 export default {
  async fetch(request,env){
